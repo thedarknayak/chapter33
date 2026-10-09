@@ -27,10 +27,11 @@
 
         .wrapper { width: 100%; max-width: 900px; margin: 0 auto; z-index: 1; position: relative; }
         
+        /* Masks Image enlarged by 50% */
         .header-masks img {
-            width: 125px;
+            width: 188px;
             height: auto;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
         }
 
@@ -41,7 +42,7 @@
 
         .book-container {
             width: 280px; 
-            height: 350px; 
+            height: 330px; 
             background: #f3ede2;
             border: 1px solid #dcd3c1; 
             border-radius: 6px;
@@ -49,17 +50,18 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            padding-top: 48px;
+            padding-top: 40px;
             z-index: 1;
         }
-        .book-author { font-size: 0.85rem; letter-spacing: 3px; color: #b0934c; margin-bottom: 22px; text-transform: uppercase; }
+        .book-author { font-size: 0.85rem; letter-spacing: 3px; color: #b0934c; margin-bottom: 20px; text-transform: uppercase; }
         .book-title { font-size: 1.9rem; font-weight: 700; color: #caaa5d; letter-spacing: 2.5px; margin-bottom: 18px; text-transform: uppercase; }
         .book-vol { font-size: 0.8rem; color: #b0934c; letter-spacing: 2px; text-transform: uppercase; }
 
+        /* Restored Countdown Position onto blank cover area */
         .countdown-grid { 
             display: flex; 
             gap: 16px; 
-            margin-top: -95px; 
+            margin-top: -165px; 
             z-index: 2; 
             justify-content: center; 
             width: 100%;
@@ -84,14 +86,14 @@
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             .corner-floral { width: 130px; }
-            .header-masks img { width: 95px; }
-            .book-container { width: 210px; height: 290px; padding-top: 34px; }
+            .header-masks img { width: 142px; }
+            .book-container { width: 230px; height: 290px; padding-top: 30px; }
             .book-title { font-size: 1.4rem; }
             .countdown-grid { 
                 flex-wrap: wrap; 
                 max-width: 360px; 
                 gap: 12px; 
-                margin-top: -55px; 
+                margin-top: -115px; 
                 justify-content: center; 
             }
             .time-box { width: 104px; height: 100px; }
@@ -117,79 +119,4 @@
             <div class="book-container">
                 <div class="book-author">POOJA,</div>
                 <div class="book-title">UNFILTERED</div>
-                <div class="book-vol">VOL. 33</div>
-            </div>
-
-            <div class="countdown-grid">
-                <div class="time-box">
-                    <div class="number" id="months">00</div>
-                    <div class="label">Months</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="days">00</div>
-                    <div class="label">Days</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="hours">00</div>
-                    <div class="label">Hours</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="mins">00</div>
-                    <div class="label">Minutes</div>
-                </div>
-                <div class="time-box">
-                    <div class="number" id="secs">00</div>
-                    <div class="label">Seconds</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-text">
-            <p>The story doesn't end here. A new chapter on its way.</p>
-            <p><strong>See you soon readers.</strong></p>
-        </div>
-    </div>
-
-    <script>
-        function updateCountdown() {
-            const now = new Date();
-            const targetDate = new Date(2027, 9, 12, 0, 0, 0);
-
-            if (now >= targetDate) {
-                document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
-                return;
-            }
-
-            let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
-            
-            let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-            if (tempDate > targetDate) {
-                months--;
-            }
-
-            let anchorDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-            let diffMs = targetDate - anchorDate;
-
-            let days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            diffMs -= days * (1000 * 60 * 60 * 24);
-
-            let hours = Math.floor(diffMs / (1000 * 60 * 60));
-            diffMs -= hours * (1000 * 60 * 60);
-
-            let minutes = Math.floor(diffMs / (1000 * 60));
-            diffMs -= minutes * (1000 * 60);
-
-            let seconds = Math.floor(diffMs / 1000);
-
-            document.getElementById('months').innerText = String(months).padStart(2, '0');
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('mins').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('secs').innerText = String(seconds).padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
-</body>
-</html>
+                <div class="book-vol
