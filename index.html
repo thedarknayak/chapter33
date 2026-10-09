@@ -146,7 +146,7 @@
         </div>
 
         <div class="footer-text">
-            <p>The story doesn't end here. The next chapter is loading...</p>
+            <p>The story doesn't end here. The best pages are yet to be written.</p>
             <p><strong>Until the next chapter, PK.</strong></p>
         </div>
     </div>
@@ -157,40 +157,4 @@
             const targetDate = new Date(2027, 9, 12, 0, 0, 0);
 
             if (now >= targetDate) {
-                document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
-                return;
-            }
-
-            let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
-            
-            let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-            if (tempDate > targetDate) {
-                months--;
-            }
-
-            let anchorDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
-            let diffMs = targetDate - anchorDate;
-
-            let days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            diffMs -= days * (1000 * 60 * 60 * 24);
-
-            let hours = Math.floor(diffMs / (1000 * 60 * 60));
-            diffMs -= hours * (1000 * 60 * 60);
-
-            let minutes = Math.floor(diffMs / (1000 * 60));
-            diffMs -= minutes * (1000 * 60);
-
-            let seconds = Math.floor(diffMs / 1000);
-
-            document.getElementById('months').innerText = String(months).padStart(2, '0');
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('mins').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('secs').innerText = String(seconds).padStart(2, '0');
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
-</body>
-</html>
+                document.querySelector('.wrapper
