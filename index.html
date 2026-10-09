@@ -23,15 +23,36 @@
         }
         .wrapper {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
         }
+
+        /* Floral Corner Elements */
+        .floral {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+        .floral-top-left {
+            top: -20px;
+            left: -20px;
+        }
+        .floral-top-right {
+            top: -20px;
+            right: -20px;
+            transform: scaleX(-1);
+        }
+
+        /* Large Mask Header */
         .header-masks {
-            font-size: 3rem;
+            font-size: 5rem; /* Doubled size */
             margin-bottom: 10px;
             line-height: 1;
         }
+
         h1 {
             font-size: 2.2rem;
             font-weight: normal;
@@ -39,106 +60,124 @@
             margin-bottom: 6px;
         }
         p.subtitle {
-            font-size: 0.95rem;
-            color: #4a4a4a;
+            font-size: 1rem;
+            color: #333333;
             margin-bottom: 25px;
         }
-        .book-container {
-            margin: 0 auto 30px auto;
-            width: 180px;
-            height: 240px;
-            background-color: #ede4d3;
-            border: 2px solid #cbac63;
-            border-radius: 4px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+
+        /* Book & Overlay Container */
+        .stage-container {
+            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Book Design matching PPT */
+        .book-container {
+            width: 280px;
+            height: 380px;
+            background-color: #f3ede2;
+            border: 1px solid #dcd3c1;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 45px;
+            z-index: 1;
         }
         .book-author {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
-            color: #7a683a;
-            margin-bottom: 15px;
+            color: #b0934c;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .book-title {
-            font-size: 1.25rem;
+            font-size: 1.8rem;
             font-weight: bold;
-            color: #cbac63;
-            letter-spacing: 1.5px;
+            color: #caaa5d;
+            letter-spacing: 2px;
             line-height: 1.2;
-            margin-bottom: 15px;
-        }
-        .book-vol {
-            font-size: 0.7rem;
-            color: #7a683a;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
-        /* Countdown Grid Default (Desktop: 5 in a row) */
+        .book-vol {
+            font-size: 0.8rem;
+            color: #b0934c;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Overlapping Gold Countdown Boxes */
         .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 35px;
-            flex-wrap: wrap;
+            margin-top: -140px; /* Overlaps directly over the book cover */
+            z-index: 2;
+            width: 100%;
         }
         .time-box {
-            background-color: #cbac63;
+            background-color: #caaa5d;
             color: #1a1a1a;
-            width: 120px;
-            height: 110px;
-            border-radius: 12px;
+            width: 130px;
+            height: 130px;
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
         }
         .number {
-            font-size: 2.2rem;
+            font-size: 3rem;
             font-weight: bold;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Georgia', serif;
             line-height: 1;
+            margin-bottom: 8px;
         }
         .label {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-top: 8px;
             font-weight: bold;
-            color: #2c2514;
-        }
-        .footer-text {
-            font-size: 0.95rem;
-            color: #333333;
-            line-height: 1.6;
+            color: #1a1a1a;
         }
 
-        /* Mobile Responsive Logic (< 768px) */
+        .footer-text {
+            font-size: 1rem;
+            color: #222222;
+            line-height: 1.6;
+            margin-top: 35px;
+        }
+
+        /* Mobile Adjustment (< 768px) */
         @media (max-width: 768px) {
+            .header-masks {
+                font-size: 3.8rem;
+            }
             h1 {
                 font-size: 1.75rem;
             }
             .book-container {
-                width: 150px;
-                height: 200px;
-                margin-bottom: 25px;
+                width: 220px;
+                height: 310px;
+                padding-top: 30px;
             }
             .book-title {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
             }
             .countdown-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
                 max-width: 360px;
-                margin: 0 auto 30px auto;
+                margin-top: -90px;
             }
-            /* Centers the 4th and 5th boxes into a 3 + 2 grid on mobile */
             .time-box:nth-child(4) {
                 grid-column: 1 / 2;
                 margin-left: 50%;
@@ -149,10 +188,10 @@
             }
             .time-box {
                 width: 100%;
-                height: 95px;
+                height: 100px;
             }
             .number {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
             .label {
                 font-size: 0.65rem;
@@ -167,32 +206,34 @@
         <h1>Chapter 33: Loading...</h1>
         <p class="subtitle">October 12, 2027. Wherever you are.</p>
 
-        <div class="book-container">
-            <div class="book-author">POOJA,</div>
-            <div class="book-title">UNFILTERED</div>
-            <div class="book-vol">VOL. 33</div>
-        </div>
+        <div class="stage-container">
+            <div class="book-container">
+                <div class="book-author">POOJA,</div>
+                <div class="book-title">UNFILTERED</div>
+                <div class="book-vol">VOL. 33</div>
+            </div>
 
-        <div class="countdown-grid">
-            <div class="time-box">
-                <div class="number" id="months">00</div>
-                <div class="label">Months</div>
-            </div>
-            <div class="time-box">
-                <div class="number" id="days">00</div>
-                <div class="label">Days</div>
-            </div>
-            <div class="time-box">
-                <div class="number" id="hours">00</div>
-                <div class="label">Hours</div>
-            </div>
-            <div class="time-box">
-                <div class="number" id="mins">00</div>
-                <div class="label">Minutes</div>
-            </div>
-            <div class="time-box">
-                <div class="number" id="secs">00</div>
-                <div class="label">Seconds</div>
+            <div class="countdown-grid">
+                <div class="time-box">
+                    <div class="number" id="months">00</div>
+                    <div class="label">Months</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="days">00</div>
+                    <div class="label">Days</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="hours">00</div>
+                    <div class="label">Hours</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="mins">00</div>
+                    <div class="label">Minutes</div>
+                </div>
+                <div class="time-box">
+                    <div class="number" id="secs">00</div>
+                    <div class="label">Seconds</div>
+                </div>
             </div>
         </div>
 
@@ -220,8 +261,7 @@
             const totalHours = Math.floor(totalMinutes / 60);
             const totalDays = Math.floor(totalHours / 24);
 
-            // Month & Day breakdown
-            const months = Math.floor(totalDays / 30.4375); // Average month length
+            const months = Math.floor(totalDays / 30.4375);
             const days = Math.floor(totalDays % 30.4375);
             const hours = totalHours % 24;
             const minutes = totalMinutes % 60;
