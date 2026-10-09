@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            background-color: #f7edd9;
+            background-color: #f5ead8;
             color: #1a1a1a;
             font-family: 'Georgia', serif;
             min-height: 100vh;
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Floral Corners - Blend Mode Removes Background Box */
+        /* Floral Corners - Transparent Multiply Blend */
         .corner-floral {
             position: fixed;
             width: 230px;
@@ -51,7 +51,7 @@
             z-index: 1;
         }
 
-        /* Scaled Masks */
+        /* Mask Header */
         .header-masks {
             font-size: 6.5rem;
             margin-bottom: 5px;
@@ -76,29 +76,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 70px; /* Expands gap below book cover */
+            margin-bottom: 65px;
         }
 
-        /* Book Cover */
+        /* Compact Book Cover */
         .book-container {
-            width: 290px;
-            height: 400px;
+            width: 280px;
+            height: 330px; /* Reduced height to shorten bottom extension */
             background-color: #f3ede2;
             border: 1px solid #dcd3c1;
             border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.10);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding-top: 50px;
+            padding-top: 40px;
             z-index: 1;
         }
         .book-author {
             font-size: 0.85rem;
             letter-spacing: 2.5px;
             color: #b0934c;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .book-title {
@@ -107,7 +107,7 @@
             color: #caaa5d;
             letter-spacing: 2px;
             line-height: 1.2;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .book-vol {
@@ -117,12 +117,12 @@
             text-transform: uppercase;
         }
 
-        /* Shifted Up Countdown Grid */
+        /* Countdown Grid Overlay */
         .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: -210px; /* Moves countdown grid higher up on the book cover */
+            margin-top: -165px; /* Aligns boxes cleanly over lower half of book */
             z-index: 2;
             width: 100%;
         }
@@ -136,7 +136,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.16);
         }
         .number {
             font-size: 3rem;
@@ -153,15 +153,15 @@
             color: #1a1a1a;
         }
 
-        /* Bottom Footer Text */
+        /* Footer Text */
         .footer-text {
             font-size: 1.05rem;
             color: #222222;
             line-height: 1.7;
-            margin-top: 35px; /* Pushes text down further */
+            margin-top: 35px;
         }
 
-        /* Mobile Adjustment (< 768px) */
+        /* Mobile Layout (< 768px) */
         @media (max-width: 768px) {
             .header-masks {
                 font-size: 5rem;
@@ -175,8 +175,8 @@
             }
             .book-container {
                 width: 230px;
-                height: 330px;
-                padding-top: 35px;
+                height: 290px;
+                padding-top: 30px;
             }
             .book-title {
                 font-size: 1.4rem;
@@ -186,7 +186,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
                 max-width: 360px;
-                margin-top: -130px;
+                margin-top: -115px;
             }
             .time-box:nth-child(4) {
                 grid-column: 1 / 2;
@@ -207,15 +207,15 @@
                 font-size: 0.65rem;
             }
             .stage-container {
-                margin-bottom: 50px;
+                margin-bottom: 45px;
             }
         }
     </style>
 </head>
 <body>
 
-    <img src="floral-decor.png" alt="" class="corner-floral top-left-floral">
-    <img src="floral-decor.png" alt="" class="corner-floral top-right-floral">
+    <img src="floral-decor-01.png" alt="" class="corner-floral top-left-floral">
+    <img src="floral-decor-01.png" alt="" class="corner-floral top-right-floral">
 
     <div class="wrapper">
         <div class="header-masks">🎭</div>
