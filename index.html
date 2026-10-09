@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 33: Loading...</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f6e8d2;
+            color: #1a1a1a;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .header-masks {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        p.subtitle {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            margin-bottom: 25px;
+        }
+        .book-container {
+            margin: 0 auto 30px auto;
+            width: 180px;
+            height: 240px;
+            background-color: #ede4d3;
+            border: 2px solid #cbac63;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        .book-author {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #7a683a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .book-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #cbac63;
+            letter-spacing: 1.5px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        .book-vol {
+            font-size: 0.7rem;
+            color: #7a683a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        /* Countdown Grid Default (Desktop: 5 in a row) */
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+        .time-box {
+            background-color: #cbac63;
+            color: #1a1a1a;
+            width: 120px;
+            height: 110px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+            line-height: 1;
+        }
+        .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 8px;
+            font-weight: bold;
+            color: #2c2514;
+        }
+        .footer-text {
+            font-size: 0.95rem;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* Mobile Responsive Logic (< 768px) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            .book-container {
+                width: 150px;
+                height: 200px;
+                margin-bottom: 25px;
+            }
+            .book-title {
+                font-size: 1.1rem;
+            }
+            .countdown-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                max-width: 360px;
+                margin: 0 auto 30px auto;
+            }
+            /* Centers the 4th and 5th boxes into a 3 + 2 grid on mobile */
+            .time-box:nth-child(4) {
+                grid-column: 1 / 2;
+                margin-left: 50%;
+            }
+            .time-box:nth-child(5) {
+                grid-column: 3 / 4;
+                margin-right: 50%;
+            }
+            .time-box {
+                width: 100%;
+                height: 95px;
+            }
+            .number {
+                font-size: 1.8rem;
+            }
+            .label {
+                font-size: 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <div class="header-masks">🎭</div>
+        <h1>Chapter 33: Loading...</h1>
+        <p class="subtitle">October 12, 2027. Wherever you are.</p>
+
+        <div class="book-container">
+            <div class="book-author">POOJA,</div>
+            <div class="book-title">UNFILTERED</div>
+            <div class="book-vol">VOL. 33</div>
+        </div>
+
+        <div class="countdown-grid">
+            <div class="time-box">
+                <div class="number" id="months">00</div>
+                <div class="label">Months</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="days">00</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="hours">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="mins">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-box">
+                <div class="number" id="secs">00</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="footer-text">
+            <p>The story doesn't end here. A new chapter on its way.</p>
+            <p><strong>See you soon readers.</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Target: October 12, 2027 00:00:00 local time
+        const targetDate = new Date(2027, 9, 12, 0, 0, 0).getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference <= 0) {
+                document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
+                return;
+            }
+
+            const totalSeconds = Math.floor(difference / 1000);
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const totalHours = Math.floor(totalMinutes / 60);
+            const totalDays = Math.floor(totalHours / 24);
+
+            // Month & Day breakdown
+            const months = Math.floor(totalDays / 30.4375); // Average month length
+            const days = Math.floor(totalDays % 30.4375);
+            const hours = totalHours % 24;
+            const minutes = totalMinutes % 60;
+            const seconds = totalSeconds % 60;
+
+            document.getElementById('months').innerText = String(months).padStart(2, '0');
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('secs').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
