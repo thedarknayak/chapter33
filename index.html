@@ -28,27 +28,9 @@
             position: relative;
         }
 
-        /* Floral Corner Elements */
-        .floral {
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            pointer-events: none;
-            opacity: 0.85;
-        }
-        .floral-top-left {
-            top: -20px;
-            left: -20px;
-        }
-        .floral-top-right {
-            top: -20px;
-            right: -20px;
-            transform: scaleX(-1);
-        }
-
         /* Large Mask Header */
         .header-masks {
-            font-size: 5rem; /* Doubled size */
+            font-size: 5rem;
             margin-bottom: 10px;
             line-height: 1;
         }
@@ -65,7 +47,7 @@
             margin-bottom: 25px;
         }
 
-        /* Book & Overlay Container */
+        /* Book & Overlay Stage */
         .stage-container {
             position: relative;
             display: flex;
@@ -117,7 +99,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: -140px; /* Overlaps directly over the book cover */
+            margin-top: -140px; /* Overlaps directly over book cover */
             z-index: 2;
             width: 100%;
         }
@@ -244,28 +226,38 @@
     </div>
 
     <script>
-        // Target: October 12, 2027 00:00:00 local time
-        const targetDate = new Date(2027, 9, 12, 0, 0, 0).getTime();
-
         function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+            // Uses local system clock/timezone automatically
+            const now = new Date();
+            const targetDate = new Date(2027, 9, 12, 0, 0, 0); // October 12, 2027 at 00:00 local time
 
-            if (difference <= 0) {
+            if (now >= targetDate) {
                 document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
                 return;
             }
 
-            const totalSeconds = Math.floor(difference / 1000);
-            const totalMinutes = Math.floor(totalSeconds / 60);
-            const totalHours = Math.floor(totalMinutes / 60);
-            const totalDays = Math.floor(totalHours / 24);
+            let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
+            
+            // Adjust month count if current day of month is before target day (12th)
+            let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+            if (tempDate > targetDate) {
+                months--;
+            }
 
-            const months = Math.floor(totalDays / 30.4375);
-            const days = Math.floor(totalDays % 30.4375);
-            const hours = totalHours % 24;
-            const minutes = totalMinutes % 60;
-            const seconds = totalSeconds % 60;
+            // Calculate remaining time after accounting for full calendar months
+            let anchorDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+            let diffMs = targetDate - anchorDate;
+
+            let days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            diffMs -= days * (1000 * 60 * 60 * 24);
+
+            let hours = Math.floor(diffMs / (1000 * 60 * 60));
+            diffMs -= hours * (1000 * 60 * 60);
+
+            let minutes = Math.floor(diffMs / (1000 * 60));
+            diffMs -= minutes * (1000 * 60);
+
+            let seconds = Math.floor(diffMs / 1000);
 
             document.getElementById('months').innerText = String(months).padStart(2, '0');
             document.getElementById('days').innerText = String(days).padStart(2, '0');
