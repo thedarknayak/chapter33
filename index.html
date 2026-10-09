@@ -154,7 +154,49 @@
     <script>
         function updateCountdown() {
             const now = new Date();
-            const targetDate = new Date(2027, 9, 12, 0, 0, 0);
+            const targetDate = new Date('2027-10-12T00:00:00');
 
-            if (now >= targetDate) {
-                document.querySelector('.wrapper
+            let diffMs = targetDate - now;
+
+            if (diffMs <= 0) {
+                document.getElementById('months').innerText = '00';
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('mins').innerText = '00';
+                document.getElementById('secs').innerText = '00';
+                return;
+            }
+
+            let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
+            let testAnchor = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+            
+            if (testAnchor > targetDate) {
+                months--;
+            }
+
+            let anchorDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
+            let remainingMs = targetDate - anchorDate;
+
+            let days = Math.floor(remainingMs / (1000 * 60 * 60 * 24));
+            remainingMs -= days * (1000 * 60 * 60 * 24);
+
+            let hours = Math.floor(remainingMs / (1000 * 60 * 60));
+            remainingMs -= hours * (1000 * 60 * 60);
+
+            let minutes = Math.floor(remainingMs / (1000 * 60));
+            remainingMs -= minutes * (1000 * 60);
+
+            let seconds = Math.floor(remainingMs / 1000);
+
+            document.getElementById('months').innerText = String(months).padStart(2, '0');
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('mins').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('secs').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
