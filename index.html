@@ -11,36 +11,36 @@
             padding: 0;
         }
         body {
-            background-color: #f6e8d2;
+            background-color: #f7edd9;
             color: #1a1a1a;
             font-family: 'Georgia', serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px; /* Symmetrical padding top and bottom */
+            padding: 40px 20px;
             text-align: center;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Gold Floral Corner Images (Symmetrical) */
+        /* Floral Corners - Blend Mode Removes Background Box */
         .corner-floral {
             position: fixed;
-            width: 220px; /* Enlarged to be prominent but not dominate */
-            height: 220px;
+            width: 230px;
+            height: 230px;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.85; /* Slight blend */
+            mix-blend-mode: multiply;
         }
         .top-left-floral {
-            top: 10px;
-            left: 10px;
+            top: 0;
+            left: 0;
         }
         .top-right-floral {
-            top: 10px;
-            right: 10px;
-            transform: scaleX(-1); /* Symmetrical mirror image */
+            top: 0;
+            right: 0;
+            transform: scaleX(-1);
         }
 
         .wrapper {
@@ -51,9 +51,9 @@
             z-index: 1;
         }
 
-        /* Larger Masks (200% size) */
+        /* Scaled Masks */
         .header-masks {
-            font-size: 8.5rem; /* Larger than before, 200%+ scaling */
+            font-size: 6.5rem;
             margin-bottom: 5px;
             line-height: 1;
         }
@@ -67,19 +67,19 @@
         p.subtitle {
             font-size: 1rem;
             color: #333333;
-            margin-bottom: 40px; /* Spacing above the book */
+            margin-bottom: 35px;
         }
 
-        /* Stage Container for Symmetrical Alignment */
+        /* Stage Container */
         .stage-container {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 50px; /* Significant spacing below the grid (matches subtitle spacing) */
+            margin-bottom: 70px; /* Expands gap below book cover */
         }
 
-        /* Book Cover Design */
+        /* Book Cover */
         .book-container {
             width: 290px;
             height: 400px;
@@ -117,12 +117,12 @@
             text-transform: uppercase;
         }
 
-        /* Symmetrical Gold Countdown Boxes */
+        /* Shifted Up Countdown Grid */
         .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: -180px; /* Overlay position */
+            margin-top: -210px; /* Moves countdown grid higher up on the book cover */
             z-index: 2;
             width: 100%;
         }
@@ -153,22 +153,22 @@
             color: #1a1a1a;
         }
 
-        /* Symmetrical Footer spacing */
+        /* Bottom Footer Text */
         .footer-text {
             font-size: 1.05rem;
             color: #222222;
             line-height: 1.7;
-            margin-top: 20px; /* Small push before text */
+            margin-top: 35px; /* Pushes text down further */
         }
 
         /* Mobile Adjustment (< 768px) */
         @media (max-width: 768px) {
             .header-masks {
-                font-size: 6.5rem;
+                font-size: 5rem;
             }
             .corner-floral {
-                width: 120px;
-                height: 120px;
+                width: 130px;
+                height: 130px;
             }
             h1 {
                 font-size: 1.75rem;
@@ -186,7 +186,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
                 max-width: 360px;
-                margin-top: -110px;
+                margin-top: -130px;
             }
             .time-box:nth-child(4) {
                 grid-column: 1 / 2;
@@ -207,10 +207,7 @@
                 font-size: 0.65rem;
             }
             .stage-container {
-                margin-bottom: 40px;
-            }
-            p.subtitle {
-                margin-bottom: 30px;
+                margin-bottom: 50px;
             }
         }
     </style>
@@ -263,17 +260,15 @@
     </div>
 
     <script>
-        // Use local user clock/timezone automatically
         function updateCountdown() {
             const now = new Date();
-            const targetDate = new Date(2027, 9, 12, 0, 0, 0); // October 12, 2027 local time
+            const targetDate = new Date(2027, 9, 12, 0, 0, 0);
 
             if (now >= targetDate) {
                 document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
                 return;
             }
 
-            // Calculation considering exact calendar months
             let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
             
             let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
