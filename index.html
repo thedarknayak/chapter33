@@ -18,50 +18,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Pure CSS Gold Floral Corner Accents */
-        .floral-corner {
+        /* Gold Floral Corner Images */
+        .corner-floral {
             position: fixed;
-            width: 140px;
-            height: 140px;
+            width: 180px;
+            height: 180px;
             pointer-events: none;
-            opacity: 0.7;
             z-index: 0;
+            opacity: 0.9;
         }
-        .top-left {
-            top: 15px;
-            left: 15px;
-            border-top: 3px solid #caaa5d;
-            border-left: 3px solid #caaa5d;
-            border-top-left-radius: 12px;
+        .top-left-floral {
+            top: 0;
+            left: 0;
         }
-        .top-left::after {
-            content: "❀ ❁";
-            position: absolute;
-            top: 8px;
-            left: 10px;
-            font-size: 1.8rem;
-            color: #caaa5d;
-        }
-        .top-right {
-            top: 15px;
-            right: 15px;
-            border-top: 3px solid #caaa5d;
-            border-right: 3px solid #caaa5d;
-            border-top-right-radius: 12px;
-        }
-        .top-right::after {
-            content: "❁ ❀";
-            position: absolute;
-            top: 8px;
-            right: 10px;
-            font-size: 1.8rem;
-            color: #caaa5d;
+        .top-right-floral {
+            top: 0;
+            right: 0;
+            transform: scaleX(-1);
         }
 
         .wrapper {
@@ -72,11 +51,11 @@
             z-index: 1;
         }
 
-        /* 250% Larger Mask Header */
+        /* Scaled Masks (150%) */
         .header-masks {
-            font-size: 11rem;
-            margin-bottom: 0px;
-            line-height: 0.9;
+            font-size: 6.5rem;
+            margin-bottom: 5px;
+            line-height: 1;
         }
 
         h1 {
@@ -91,13 +70,13 @@
             margin-bottom: 30px;
         }
 
-        /* Stage Container for Precise Book Overlay */
+        /* Stage Container for Book & Overlapping Countdown */
         .stage-container {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 50px; /* Generous spacing for bottom section */
         }
 
         /* Book Cover Design */
@@ -138,12 +117,12 @@
             text-transform: uppercase;
         }
 
-        /* Countdown Grid Positioned Between VOL. 33 and Book Bottom */
+        /* Countdown Grid Positioned Over Lower Half of Book */
         .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: -180px; /* Perfectly centers boxes in lower half of book */
+            margin-top: -180px;
             z-index: 2;
             width: 100%;
         }
@@ -174,24 +153,22 @@
             color: #1a1a1a;
         }
 
+        /* Clean Spaced Footer */
         .footer-text {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: #222222;
-            line-height: 1.6;
-            margin-top: 40px;
+            line-height: 1.7;
+            margin-top: 20px;
         }
 
         /* Mobile Adjustment (< 768px) */
         @media (max-width: 768px) {
             .header-masks {
-                font-size: 7rem;
+                font-size: 5rem;
             }
-            .floral-corner {
-                width: 80px;
-                height: 80px;
-            }
-            .floral-corner::after {
-                font-size: 1.2rem;
+            .corner-floral {
+                width: 110px;
+                height: 110px;
             }
             h1 {
                 font-size: 1.75rem;
@@ -229,13 +206,37 @@
             .label {
                 font-size: 0.65rem;
             }
+            .stage-container {
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="floral-corner top-left"></div>
-    <div class="floral-corner top-right"></div>
+    <!-- Embedded Gold Floral Corners -->
+    <svg class="corner-floral top-left-floral" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.85">
+            <path d="M20 20 C60 10, 120 40, 160 20 C110 70, 70 110, 20 160 C40 120, 10 60, 20 20 Z" fill="#caaa5d" opacity="0.3"/>
+            <circle cx="50" cy="50" r="18" fill="#caaa5d" opacity="0.6"/>
+            <circle cx="100" cy="35" r="14" fill="#d8bc75" opacity="0.7"/>
+            <circle cx="35" cy="100" r="14" fill="#d8bc75" opacity="0.7"/>
+            <path d="M10 10 L180 10 M10 10 L10 180" stroke="#caaa5d" stroke-width="2" opacity="0.5"/>
+            <path d="M50 50 Q80 20 120 25 Q150 30 170 15" stroke="#caaa5d" stroke-width="2" fill="none"/>
+            <path d="M50 50 Q20 80 25 120 Q30 150 15 170" stroke="#caaa5d" stroke-width="2" fill="none"/>
+        </g>
+    </svg>
+    <svg class="corner-floral top-right-floral" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g opacity="0.85">
+            <path d="M20 20 C60 10, 120 40, 160 20 C110 70, 70 110, 20 160 C40 120, 10 60, 20 20 Z" fill="#caaa5d" opacity="0.3"/>
+            <circle cx="50" cy="50" r="18" fill="#caaa5d" opacity="0.6"/>
+            <circle cx="100" cy="35" r="14" fill="#d8bc75" opacity="0.7"/>
+            <circle cx="35" cy="100" r="14" fill="#d8bc75" opacity="0.7"/>
+            <path d="M10 10 L180 10 M10 10 L10 180" stroke="#caaa5d" stroke-width="2" opacity="0.5"/>
+            <path d="M50 50 Q80 20 120 25 Q150 30 170 15" stroke="#caaa5d" stroke-width="2" fill="none"/>
+            <path d="M50 50 Q20 80 25 120 Q30 150 15 170" stroke="#caaa5d" stroke-width="2" fill="none"/>
+        </g>
+    </svg>
 
     <div class="wrapper">
         <div class="header-masks">🎭</div>
