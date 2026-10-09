@@ -20,19 +20,63 @@
             align-items: center;
             padding: 20px;
             text-align: center;
+            position: relative;
+            overflow-x: hidden;
         }
+
+        /* Pure CSS Gold Floral Corner Accents */
+        .floral-corner {
+            position: fixed;
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        .top-left {
+            top: 15px;
+            left: 15px;
+            border-top: 3px solid #caaa5d;
+            border-left: 3px solid #caaa5d;
+            border-top-left-radius: 12px;
+        }
+        .top-left::after {
+            content: "❀ ❁";
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 1.8rem;
+            color: #caaa5d;
+        }
+        .top-right {
+            top: 15px;
+            right: 15px;
+            border-top: 3px solid #caaa5d;
+            border-right: 3px solid #caaa5d;
+            border-top-right-radius: 12px;
+        }
+        .top-right::after {
+            content: "❁ ❀";
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 1.8rem;
+            color: #caaa5d;
+        }
+
         .wrapper {
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
             position: relative;
+            z-index: 1;
         }
 
-        /* Large Mask Header */
+        /* 250% Larger Mask Header */
         .header-masks {
-            font-size: 5rem;
-            margin-bottom: 10px;
-            line-height: 1;
+            font-size: 11rem;
+            margin-bottom: 0px;
+            line-height: 0.9;
         }
 
         h1 {
@@ -44,10 +88,10 @@
         p.subtitle {
             font-size: 1rem;
             color: #333333;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        /* Book & Overlay Stage */
+        /* Stage Container for Precise Book Overlay */
         .stage-container {
             position: relative;
             display: flex;
@@ -56,10 +100,10 @@
             margin-bottom: 20px;
         }
 
-        /* Book Design matching PPT */
+        /* Book Cover Design */
         .book-container {
-            width: 280px;
-            height: 380px;
+            width: 290px;
+            height: 400px;
             background-color: #f3ede2;
             border: 1px solid #dcd3c1;
             border-radius: 4px;
@@ -68,23 +112,23 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            padding-top: 45px;
+            padding-top: 50px;
             z-index: 1;
         }
         .book-author {
             font-size: 0.85rem;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: #b0934c;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
         .book-title {
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: bold;
             color: #caaa5d;
             letter-spacing: 2px;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-transform: uppercase;
         }
         .book-vol {
@@ -94,12 +138,12 @@
             text-transform: uppercase;
         }
 
-        /* Overlapping Gold Countdown Boxes */
+        /* Countdown Grid Positioned Between VOL. 33 and Book Bottom */
         .countdown-grid {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: -140px; /* Overlaps directly over book cover */
+            margin-top: -180px; /* Perfectly centers boxes in lower half of book */
             z-index: 2;
             width: 100%;
         }
@@ -113,7 +157,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
         }
         .number {
             font-size: 3rem;
@@ -134,21 +178,28 @@
             font-size: 1rem;
             color: #222222;
             line-height: 1.6;
-            margin-top: 35px;
+            margin-top: 40px;
         }
 
         /* Mobile Adjustment (< 768px) */
         @media (max-width: 768px) {
             .header-masks {
-                font-size: 3.8rem;
+                font-size: 7rem;
+            }
+            .floral-corner {
+                width: 80px;
+                height: 80px;
+            }
+            .floral-corner::after {
+                font-size: 1.2rem;
             }
             h1 {
                 font-size: 1.75rem;
             }
             .book-container {
-                width: 220px;
-                height: 310px;
-                padding-top: 30px;
+                width: 230px;
+                height: 330px;
+                padding-top: 35px;
             }
             .book-title {
                 font-size: 1.4rem;
@@ -158,7 +209,7 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
                 max-width: 360px;
-                margin-top: -90px;
+                margin-top: -110px;
             }
             .time-box:nth-child(4) {
                 grid-column: 1 / 2;
@@ -182,6 +233,9 @@
     </style>
 </head>
 <body>
+
+    <div class="floral-corner top-left"></div>
+    <div class="floral-corner top-right"></div>
 
     <div class="wrapper">
         <div class="header-masks">🎭</div>
@@ -227,9 +281,8 @@
 
     <script>
         function updateCountdown() {
-            // Uses local system clock/timezone automatically
             const now = new Date();
-            const targetDate = new Date(2027, 9, 12, 0, 0, 0); // October 12, 2027 at 00:00 local time
+            const targetDate = new Date(2027, 9, 12, 0, 0, 0);
 
             if (now >= targetDate) {
                 document.querySelector('.wrapper').innerHTML = '<h1>Chapter 33 Unlocked</h1>';
@@ -238,13 +291,11 @@
 
             let months = (targetDate.getFullYear() - now.getFullYear()) * 12 + (targetDate.getMonth() - now.getMonth());
             
-            // Adjust month count if current day of month is before target day (12th)
             let tempDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
             if (tempDate > targetDate) {
                 months--;
             }
 
-            // Calculate remaining time after accounting for full calendar months
             let anchorDate = new Date(now.getFullYear(), now.getMonth() + months, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
             let diffMs = targetDate - anchorDate;
 
