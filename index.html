@@ -4,16 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 33: Loading...</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #f5ead8;
             color: #1a1a1a;
-            font-family: 'Georgia', serif;
+            font-family: 'EB Garamond', 'Georgia', serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -24,190 +21,83 @@
             overflow-x: hidden;
         }
 
-        /* Transparent Corner Placement */
-        .corner-floral {
-            position: fixed;
-            width: 230px;
-            height: 230px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .top-left-floral {
-            top: 0;
-            left: 0;
-        }
-        .top-right-floral {
-            top: 0;
-            right: 0;
-            transform: scaleX(-1);
+        .corner-floral { position: fixed; width: 230px; pointer-events: none; z-index: 0; }
+        .top-left-floral { top: 0; left: 0; }
+        .top-right-floral { top: 0; right: 0; transform: scaleX(-1); }
+
+        .wrapper { width: 100%; max-width: 900px; margin: 0 auto; z-index: 1; position: relative; }
+        
+        .header-masks img {
+            width: 125px;
+            height: auto;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.12));
         }
 
-        .wrapper {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
+        h1 { font-size: 2.4rem; font-weight: 600; margin-bottom: 8px; }
+        p.subtitle { font-size: 1.05rem; color: #333333; margin-bottom: 38px; }
 
-        /* Mask Header */
-        .header-masks {
-            font-size: 6.5rem;
-            margin-bottom: 5px;
-            line-height: 1;
-        }
+        .stage-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 65px; position: relative; }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-        p.subtitle {
-            font-size: 1rem;
-            color: #333333;
-            margin-bottom: 35px;
-        }
-
-        /* Stage Container */
-        .stage-container {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 65px;
-        }
-
-        /* Compact Book Cover */
         .book-container {
-            width: 280px;
-            height: 330px;
-            background-color: #f3ede2;
-            border: 1px solid #dcd3c1;
-            border-radius: 4px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.10);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            padding-top: 40px;
+            width: 280px; 
+            height: 350px; 
+            background: #f3ede2;
+            border: 1px solid #dcd3c1; 
+            border-radius: 6px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding-top: 48px;
             z-index: 1;
         }
-        .book-author {
-            font-size: 0.85rem;
-            letter-spacing: 2.5px;
-            color: #b0934c;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        .book-title {
-            font-size: 1.85rem;
-            font-weight: bold;
-            color: #caaa5d;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        .book-vol {
-            font-size: 0.8rem;
-            color: #b0934c;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
+        .book-author { font-size: 0.85rem; letter-spacing: 3px; color: #b0934c; margin-bottom: 22px; text-transform: uppercase; }
+        .book-title { font-size: 1.9rem; font-weight: 700; color: #caaa5d; letter-spacing: 2.5px; margin-bottom: 18px; text-transform: uppercase; }
+        .book-vol { font-size: 0.8rem; color: #b0934c; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* Countdown Grid Overlay */
-        .countdown-grid {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: -165px;
-            z-index: 2;
+        .countdown-grid { 
+            display: flex; 
+            gap: 16px; 
+            margin-top: -95px; 
+            z-index: 2; 
+            justify-content: center; 
             width: 100%;
         }
-        .time-box {
-            background-color: #caaa5d;
+        .time-box { 
+            background: #caaa5d; 
             color: #1a1a1a;
-            width: 130px;
-            height: 130px;
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+            width: 132px; 
+            height: 132px; 
+            border-radius: 16px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.18); 
         }
-        .number {
-            font-size: 3rem;
-            font-weight: bold;
-            font-family: 'Georgia', serif;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: bold;
-            color: #1a1a1a;
-        }
+        .number { font-size: 2.9rem; font-weight: 700; margin-bottom: 8px; line-height: 1; }
+        .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.8px; font-weight: 700; }
 
-        /* Footer Text */
-        .footer-text {
-            font-size: 1.05rem;
-            color: #222222;
-            line-height: 1.7;
-            margin-top: 35px;
-        }
+        .footer-text { font-size: 1.08rem; color: #222222; line-height: 1.7; margin-top: 38px; }
 
-        /* Mobile Layout (< 768px) */
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .header-masks {
-                font-size: 5rem;
+            .corner-floral { width: 130px; }
+            .header-masks img { width: 95px; }
+            .book-container { width: 210px; height: 290px; padding-top: 34px; }
+            .book-title { font-size: 1.4rem; }
+            .countdown-grid { 
+                flex-wrap: wrap; 
+                max-width: 360px; 
+                gap: 12px; 
+                margin-top: -55px; 
+                justify-content: center; 
             }
-            .corner-floral {
-                width: 130px;
-                height: 130px;
-            }
-            h1 {
-                font-size: 1.75rem;
-            }
-            .book-container {
-                width: 230px;
-                height: 290px;
-                padding-top: 30px;
-            }
-            .book-title {
-                font-size: 1.4rem;
-            }
-            .countdown-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 10px;
-                max-width: 360px;
-                margin-top: -115px;
-            }
-            .time-box:nth-child(4) {
-                grid-column: 1 / 2;
-                margin-left: 50%;
-            }
-            .time-box:nth-child(5) {
-                grid-column: 3 / 4;
-                margin-right: 50%;
-            }
-            .time-box {
-                width: 100%;
-                height: 100px;
-            }
-            .number {
-                font-size: 2.2rem;
-            }
-            .label {
-                font-size: 0.65rem;
-            }
-            .stage-container {
-                margin-bottom: 45px;
-            }
+            .time-box { width: 104px; height: 100px; }
+            .time-box:nth-child(4), .time-box:nth-child(5) { flex: 0 0 104px; }
+            .number { font-size: 2.15rem; }
+            .label { font-size: 0.65rem; }
         }
     </style>
 </head>
@@ -217,7 +107,9 @@
     <img src="floral-decor-02.png" alt="" class="corner-floral top-right-floral">
 
     <div class="wrapper">
-        <div class="header-masks">🎭</div>
+        <div class="header-masks">
+            <img src="masks.png" alt="masks">
+        </div>
         <h1>Chapter 33: Loading...</h1>
         <p class="subtitle">October 12, 2027. Wherever you are.</p>
 
